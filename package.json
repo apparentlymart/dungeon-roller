@@ -1,0 +1,37 @@
+{
+  "name": "dungeon-roller",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "lint": "jshint app",
+    "start": "webpack-dev-server --content-base app/ --inline --hot --history-api-fallback --mode=development",
+    "firebase": "firebase"
+  },
+  "devDependencies": {
+    "angular": "^1.6.9",
+    "angular-animate": "^1.6.9",
+    "angular-aria": "^1.6.9",
+    "angular-material": "1.1.0-rc.5",
+    "angular-route": "^1.6.9",
+    "angularfire": "^2.3.0",
+    "css-loader": "",
+    "file-loader": "",
+    "firebase": "^4.12.1",
+    "firebase-tools": "",
+    "html-loader": "",
+    "html-webpack-plugin": "",
+    "image-webpack-loader": "",
+    "jshint": "",
+    "jshint-loader": "",
+    "ng-anon-module": "0.0.1",
+    "ng-inject-loader": "0.0.2",
+    "node-sass": "",
+    "resolve-url-loader": "",
+    "sass-loader": "",
+    "style-loader": "",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": ""
+  }
+}
