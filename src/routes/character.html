@@ -1,0 +1,17 @@
+<header>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" ng-click="openMenu()" aria-label="Main Menu" ng-if="!fixedMenu">
+                <md-icon>menu</md-icon>
+            </md-button>
+
+            <h2 flex md-truncate>{{ character.name }}</h2>
+        </div>
+    </md-toolbar>
+</header>
+<md-content aria-role="main" ng-if="authReady" layout="column" flex>
+
+</md-content>
+<div ng-if="!authReady" layout="column" flex layout-align="center center">
+    <md-progress-circular md-mode="indeterminate" aria-label="Loading..."></md-progress-circular>
+</div>

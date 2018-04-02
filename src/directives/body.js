@@ -21,6 +21,12 @@ module.exports = {
       $scope.openMenu = function openMenu() {
         $mdSidenav("leftNav").open();
       };
+      $scope.closeMenu = function closeMenu() {
+        $mdSidenav("leftNav").close();
+      };
+      $scope.$on("$routeChangeStart", function() {
+        $scope.closeMenu();
+      });
 
       const auth = $firebaseAuth();
       $scope.user = null;
