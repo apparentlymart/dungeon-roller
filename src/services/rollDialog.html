@@ -1,0 +1,42 @@
+<md-dialog aria-label="Dice Roll Dialog">
+  <md-dialog-content layout="column">
+    <div flex=20 class="dr-roll-caption" flex-align="center center">
+      <h2>{{caption}}</h2>
+    </div>
+    <div flex="grow" class="dr-roll-result" flex-align="center center">
+      {{result}}
+    </div>
+    <div flex=20 class="dr-roll-details" layout="row" layout-padding=10px>
+      <div flex flex-fill>
+        <span ng-repeat="(i, roll) in initialRoll.rolls track by i">{{ roll }}&nbsp;+&nbsp;</span>{{ initialRoll.mod }}
+      </div>
+      <div flex="none">
+        = {{ initialRoll.result }}
+        <span ng-if="initialRoll.crit == -1">
+          <md-icon>error</md-icon>
+        </span>
+        <span ng-if="initialRoll.crit == 1">
+          <md-icon>star</md-icon>
+        </span>
+      </div>
+    </div>
+    <div flex=20 class="dr-roll-details" layout="row" layout-padding=10px>
+      <div ng-if="!bonusRoll" layout="row" flex>
+        <md-button class="md-raised" flex>Advantage</md-button>
+        <md-button class="md-raised" flex>Disadvantage</md-button>
+      </div>
+      <div flex flex-fill ng-if="bonusRoll">
+        <span ng-repeat="(i, roll) in bonusRoll.rolls track by i">{{ roll }}&nbsp;+&nbsp;</span>{{ bonusRoll.mod }}
+      </div>
+      <div flex="none" ng-if="bonusRoll">
+        = {{ bonusRoll.result }}
+        <span ng-if="bonusRoll.crit == -1">
+          <md-icon>error</md-icon>
+        </span>
+        <span ng-if="bonusRoll.crit == 1">
+          <md-icon>star</md-icon>
+        </span>
+      </div>
+    </div>
+  </md-dialog-content>
+</md-dialog>

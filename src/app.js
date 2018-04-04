@@ -1,5 +1,10 @@
 const app = require("ng-anon-module")();
 
+app.factory(
+  "drRollDialog",
+  require("ng-inject-loader!./services/rollDialog.js")
+);
+
 app.directive("body", require("ng-inject-loader!./directives/body.js"));
 
 app.config([

@@ -23,6 +23,7 @@
     "image-webpack-loader": "",
     "jshint": "",
     "jshint-loader": "",
+    "mersenne-twister": "^1.1.0",
     "ng-anon-module": "0.0.1",
     "ng-inject-loader": "0.0.2",
     "node-sass": "",
