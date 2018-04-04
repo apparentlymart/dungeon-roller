@@ -51,7 +51,15 @@ module.exports = function rollDialog(event, roll) {
 
   $scope.caption = roll.caption;
   $scope.initialRoll = rollDie(roll.die);
-  $scope.result = $scope.initialRoll.result;
+  $scope.bonusRoll = null;
+  $scope.bonusAdvantage = null;
+  updateResult();
+
+  $scope.rollBonus = function rollBonus(advantage) {
+    $scope.bonusRoll = rollDie(roll.die);
+    $scope.bonusAdvantage = advantage;
+    updateResult();
+  };
 
   $mdDialog.show({
     controller: controller,
@@ -62,4 +70,25 @@ module.exports = function rollDialog(event, roll) {
     clickOutsideToClose: true,
     fullscreen: true
   });
+
+  function updateResult() {
+    if ($scope.bonusRoll == null) {
+      $scope.chosenRoll = $scope.initialRoll;
+      return;
+    }
+
+    if ($scope.bonusAdvantage) {
+      if ($scope.initialRoll.result > $scope.bonusRoll.result) {
+        $scope.chosenRoll = $scope.initialRoll;
+      } else {
+        $scope.chosenRoll = $scope.bonusRoll;
+      }
+    } else {
+      if ($scope.initialRoll.result < $scope.bonusRoll.result) {
+        $scope.chosenRoll = $scope.initialRoll;
+      } else {
+        $scope.chosenRoll = $scope.bonusRoll;
+      }
+    }
+  }
 };
