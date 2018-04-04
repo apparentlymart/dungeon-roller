@@ -1,8 +1,14 @@
 <md-dialog aria-label="Dice Roll Dialog">
-  <md-dialog-content layout="column">
-    <div flex=20 class="dr-roll-caption" flex-align="center center">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
       <h2>{{caption}}</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon>close</md-icon>
+      </md-button>
     </div>
+  </md-toolbar>
+  <md-dialog-content layout="column">
     <div flex="grow" class="dr-roll-result" flex-align="center center">
       {{chosenRoll.result}}
     </div>

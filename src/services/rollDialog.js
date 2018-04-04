@@ -61,6 +61,10 @@ module.exports = function rollDialog(event, roll) {
     updateResult();
   };
 
+  $scope.closeDialog = function closeDialog() {
+    $mdDialog.cancel();
+  };
+
   $mdDialog.show({
     controller: controller,
     template: template,
