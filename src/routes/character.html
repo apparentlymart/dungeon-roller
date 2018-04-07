@@ -11,42 +11,74 @@
 </header>
 <md-content aria-role="main" ng-if="authReady" layout="column" flex layout-fill>
 
-    <div flex="10">
-        <md-grid-list md-cols="1" md-row-height="fit" md-gutter="0" flex layout="row" layout-wrap layout-fill role="list">
+    <md-tabs flex layout-fill md-stretch-tabs="auto" md-swipe-content md-border-bottom>
 
-            <md-grid-tile role="list-item" class="dr-roll-tile">
-                <md-button flex ng-click="rollInitiative($event)">Roll for Initiative</md-button>
-            </md-grid-tile>
+        <md-tab>
+            <md-tab-label>Abilities</md-tab-label>
+            <md-tab-body layout="column">
 
-        </md-grid-list>
-    </div>
+                <md-content layout="column" flex layout-fill>
 
-    <md-subheader>Abilities</md-subheader>
+                    <div flex="10">
+                        <md-grid-list md-cols="1" md-row-height="fit" md-gutter="0" flex layout="row" layout-wrap layout-fill role="list">
 
-    <div flex="25">
-        <md-grid-list md-cols="2" md-row-height="fit" md-gutter="0" flex layout="row" layout-wrap layout-fill role="list">
+                            <md-grid-tile role="list-item" class="dr-roll-tile">
+                                <md-button flex ng-click="rollInitiative($event)">Roll for Initiative</md-button>
+                            </md-grid-tile>
 
-            <md-grid-tile role="list-item" class="dr-roll-tile dr-ability-tile" ng-repeat="ability in abilities track by ability.keyword">
-                <md-button flex="80" class="dr-ability-check" ng-click="rollAbilityCheck($event, ability)">{{ ability.name }}</md-button>
-                <md-button flex="20" class="dr-ability-save md-icon-button" ng-click="rollAbilitySave($event, ability)">
-                    <md-icon>undo</md-icon>
-                </md-button>
-            </md-grid-tile>
+                        </md-grid-list>
+                    </div>
 
-        </md-grid-list>
-    </div>
+                    <md-divider></md-divider>
 
-    <md-subheader>Skills</md-subheader>
+                    <div flex="25">
+                        <md-grid-list md-cols="2" md-row-height="fit" md-gutter="0" flex layout="row" layout-wrap layout-fill role="list">
 
-    <div flex="75">
-        <md-grid-list md-cols="2" md-row-height="fit" md-gutter="0" flex layout="row" layout-wrap layout-fill role="list">
+                            <md-grid-tile role="list-item" class="dr-roll-tile dr-ability-tile" ng-repeat="ability in abilities track by ability.keyword">
+                                <md-button flex="80" class="dr-ability-check" ng-click="rollAbilityCheck($event, ability)">{{ ability.name }}</md-button>
+                                <md-button flex="20" class="dr-ability-save md-icon-button" ng-click="rollAbilitySave($event, ability)">
+                                    <md-icon>undo</md-icon>
+                                </md-button>
+                            </md-grid-tile>
 
-            <md-grid-tile role="list-item" class="dr-roll-tile" ng-repeat="skill in skills track by skill.keyword">
-                <md-button flex ng-click="rollSkillCheck($event, skill)">{{ skill.name }}</md-button>
-            </md-grid-tile>
+                        </md-grid-list>
+                    </div>
 
-        </md-grid-list>
-    </div>
+                    <md-divider></md-divider>
+
+                    <div flex="75">
+                        <md-grid-list md-cols="2" md-row-height="fit" md-gutter="0" flex layout="row" layout-wrap layout-fill role="list">
+
+                            <md-grid-tile role="list-item" class="dr-roll-tile" ng-repeat="skill in skills track by skill.keyword">
+                                <md-button flex ng-click="rollSkillCheck($event, skill)">{{ skill.name }}</md-button>
+                            </md-grid-tile>
+
+                        </md-grid-list>
+                    </div>
+
+                </md-content>
+
+            </md-tab-body>
+        </md-tab>
+
+        <md-tab>
+            <md-tab-label>Attacks</md-tab-label>
+            <md-tab-body layout="column">
+
+
+            </md-tab-body>
+        </md-tab>
+
+        <md-tab>
+            <md-tab-label>Dice</md-tab-label>
+            <md-tab-body layout="column">
+
+
+            </md-tab-body>
+        </md-tab>
+
+    </md-tabs>
+
 
 </md-content>
 <div ng-if="!authReady" layout="column" flex layout-align="center center">

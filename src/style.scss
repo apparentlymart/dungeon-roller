@@ -20,3 +20,14 @@
 .dr-roll-details {
   font-size: 2em;
 }
+
+// This is a hack to make the tab content flex to full height, since otherwise
+// it shrinks to the content and that doesn't work when the content itself
+// is flexible, as it is in our case.
+md-tab-content > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
