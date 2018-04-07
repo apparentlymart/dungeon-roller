@@ -57,6 +57,34 @@ module.exports = {
           die: checkDie($scope.character.skills[skill.keyword])
         });
       };
+      $scope.rollAttack = function(event, attack) {
+        console.log("roll for attack is not yet implemented", attack);
+      };
+      $scope.rollDirect = function(event, die) {
+        var caption = "Roll " + die.count + "d" + die.sides;
+        drRollDialog(event, {
+          caption: caption,
+          die: die
+        });
+      };
+      $scope.adjustObjectProp = function(obj, prop, mod, min) {
+        if (typeof obj[prop] !== "number") {
+          obj[prop] = 0;
+        }
+        obj[prop] = obj[prop] + mod;
+        if (min !== undefined && obj[prop] < min) {
+          obj[prop] = min;
+        }
+      };
+
+      var directDice = [4, 6, 8, 10, 12, 20, 100];
+      $scope.directDice = directDice.map(function(d) {
+        return {
+          sides: d,
+          count: 1,
+          mod: 0
+        };
+      });
     }
   ]
 };

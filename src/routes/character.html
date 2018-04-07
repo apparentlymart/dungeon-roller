@@ -65,6 +65,20 @@
             <md-tab-label>Attacks</md-tab-label>
             <md-tab-body layout="column">
 
+                <md-content layout="column" flex layout-fill>
+
+                    <md-list>
+
+                        <md-list-item ng-repeat="(k, attack) in character.attacks track by k" ng-click="rollAttack($event, attack)" class="md-2-line">
+                            <div class="md-list-item-text" layout="column">
+                                <h3>{{ attack.name }}</h3>
+                                <p>{{ attack.type }}</p>
+                            </div>
+                        </md-list-item>
+
+                    </md-list>
+
+                </md-content>
 
             </md-tab-body>
         </md-tab>
@@ -73,6 +87,44 @@
             <md-tab-label>Dice</md-tab-label>
             <md-tab-body layout="column">
 
+                <md-content layout="column" flex layout-fill layout-align="space-around start">
+
+                    <div ng-repeat="(k, die) in directDice track by k" layout="column" layout-padding="1em" style="width:100%;" aria-label="Roll d{{ die.sides }}"
+                        layout-align="center center">
+                        <div flex layout="row" layout-fill layout-align="space-around center">
+                            <ng-button class="md-icon-button" flex=none ng-click="adjustObjectProp(die, 'count', -1, 1)" ng-disabled="die.count <= 1">
+                                <md-icon aria-label="Decrease d{{ die.sides }} count">remove</md-icon>
+                            </ng-button>
+                            <div flex="65" style="text-align:center;">{{ die.count }}</div>
+                            <ng-button class="md-icon-button" flex=none ng-click="adjustObjectProp(die, 'count', +1, 1)">
+                                <md-icon aria-label="Increase d{{ die.sides }} count">add</md-icon>
+                            </ng-button>
+
+                            <div flex="50"></div>
+
+                            <div flex="grow" style="text-align:center;">d{{ die.sides }}</div>
+
+                            <div flex="50"></div>
+
+                            <ng-button class="md-icon-button" flex=none ng-click="adjustObjectProp(die, 'mod', -1)" ng-disabled="die.count <= 1">
+                                <md-icon aria-label="Decrease d{{ die.sides }} modifier">remove</md-icon>
+                            </ng-button>
+                            <div flex="65" style="text-align:center;">
+                                {{ die.mod &lt; 0 ? die.mod : "+" + die.mod }} </div>
+
+                            <ng-button class="md-icon-button" flex=none ng-click="adjustObjectProp(die, 'mod', +1)">
+                                <md-icon aria-label="Increase d{{ die.sides }} modifier">add</md-icon>
+                            </ng-button>
+
+                            <div flex="grow"></div>
+
+                            <md-button class="md-icon-button" flex=none ng-click="rollDirect($event, die)">
+                                <md-icon aria-label="Roll">&#xE037;</md-icon>
+                            </md-button>
+                        </div>
+                    </div>
+
+                </md-content>
 
             </md-tab-body>
         </md-tab>
